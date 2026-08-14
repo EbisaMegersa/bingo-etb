@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: bingo-etb-api
+    env: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ADMIN_PHONE
+        value: "0965041641"
+      - key: ADMIN_NAME
+        value: "Sisay"
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CLIENT_URL
+        fromService:
+          type: static
+          name: bingo-etb-client
+          property: url
+
+  - type: static
+    name: bingo-etb-client
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: bingo-etb-api
+          property: url
+          envVarKey: API_URL
