@@ -1,0 +1,8 @@
+{
+  "name": "Bingo ETB",
+  "description": "Ethiopian Birr Bingo Game with Telebirr payment integration, auto-play, wallet, and admin verification dashboard.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
